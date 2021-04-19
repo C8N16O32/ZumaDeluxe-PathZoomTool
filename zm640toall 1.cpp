@@ -1,4 +1,4 @@
-// zm640toall.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌĞòµÄÈë¿Úµã¡£
+// zm640toall.cpp : å®šä¹‰æ§åˆ¶å°åº”ç”¨ç¨‹åºçš„å…¥å£ç‚¹ã€‚
 //
 
 #include "stdafx.h"
@@ -13,8 +13,8 @@ struct __Pfloat__ {
 };
 
 void tempsizeupper(int *size, int addsize, char ***buffer) {
-	//ÓÃÓÚÔÚĞèÒªµÄÊ±ºòÀ©´ó»òµ÷Ğ¡¶¯Ì¬Êı×é
-	//´´½¨
+	//ç”¨äºåœ¨éœ€è¦çš„æ—¶å€™æ‰©å¤§æˆ–è°ƒå°åŠ¨æ€æ•°ç»„
+	//åˆ›å»º
 	char ** temp;
 	temp = new char*[*size];
 	memset(temp, 0, *size);
@@ -23,17 +23,17 @@ void tempsizeupper(int *size, int addsize, char ***buffer) {
 		*(temp + i) = new char[4];
 		memset(*(temp + i), 0, 4);
 	}
-	//¸´ÖÆÖµ
+	//å¤åˆ¶å€¼
 	int j; if (*size>0)
 		for (i = 0; i < *size; i++)
 			for (j = 0; j < 4; j++)
 				*(*(temp + i) + j) = *(*(*buffer + i) + j);
-	//¾É¿Õ¼äÊÍ·Å£¬¾ÉÖ¸ÕëÊÍ·Å
+	//æ—§ç©ºé—´é‡Šæ”¾ï¼Œæ—§æŒ‡é’ˆé‡Šæ”¾
 	for (i = 0; i < *size; i++)
 		delete[] * (*buffer + i);
 	delete[] * buffer;
 	*buffer = NULL;
-	//´´½¨
+	//åˆ›å»º
 	*buffer = new char*[*size + addsize];
 	memset(*buffer, 0, *size + addsize);
 	for (i = 0; i < *size + addsize; i++)
@@ -41,20 +41,20 @@ void tempsizeupper(int *size, int addsize, char ***buffer) {
 		*(*buffer + i) = new char[4];
 		memset(*(*buffer + i), 0, 4);
 	}
-	//¸´ÖÆÖµ
+	//å¤åˆ¶å€¼
 	if (*size > 0)
 		for (i = 0; i < *size; i++)
 			for (j = 0; j < 4; j++)
 				*(*(*buffer + i) + j) = *(*(temp + i) + j);
-	//temp¿Õ¼äÊÍ·Å£¬tempÖ¸ÕëÊÍ·Å
+	//tempç©ºé—´é‡Šæ”¾ï¼ŒtempæŒ‡é’ˆé‡Šæ”¾
 	for (i = 0; i < *size; i++)
 		delete[] * (temp + i);
 	delete[] temp; temp = NULL;
 	*size += addsize;
 }
 void tempsizeupper_float(int *size, int addsize, float ***buffer) {
-	//ÓÃÓÚÔÚĞèÒªµÄÊ±ºòÀ©´ó»òµ÷Ğ¡¶¯Ì¬Êı×é
-	//´´½¨
+	//ç”¨äºåœ¨éœ€è¦çš„æ—¶å€™æ‰©å¤§æˆ–è°ƒå°åŠ¨æ€æ•°ç»„
+	//åˆ›å»º
 	float ** temp;
 	temp = new float*[*size];
 	memset(temp, 0, *size);
@@ -63,16 +63,16 @@ void tempsizeupper_float(int *size, int addsize, float ***buffer) {
 		*(temp + i) = new float[4];
 		memset(*(temp + i), 0, 4);
 	}
-	//¸´ÖÆÖµ
+	//å¤åˆ¶å€¼
 	int j; if (*size>0)
 		for (i = 0; i < *size; i++)
 			for (j = 0; j < 4; j++)
 				*(*(temp + i) + j) = *(*(*buffer + i) + j);
-	//¾É¿Õ¼äÊÍ·Å£¬¾ÉÖ¸ÕëÊÍ·Å
+	//æ—§ç©ºé—´é‡Šæ”¾ï¼Œæ—§æŒ‡é’ˆé‡Šæ”¾
 	for (i = 0; i < *size; i++)
 		delete[] * (*buffer + i);
 	if (*buffer != NULL)delete[] * buffer;
-	//´´½¨
+	//åˆ›å»º
 	*buffer = new float*[*size + addsize];
 	memset(*buffer, 0, *size + addsize);
 	for (i = 0; i < *size + addsize; i++)
@@ -80,12 +80,12 @@ void tempsizeupper_float(int *size, int addsize, float ***buffer) {
 		*(*buffer + i) = new float[4];
 		memset(*(*buffer + i), 0, 4);
 	}
-	//¸´ÖÆÖµ
+	//å¤åˆ¶å€¼
 	if (*size > 0)
 		for (i = 0; i < *size; i++)
 			for (j = 0; j < 4; j++)
 				*(*(*buffer + i) + j) = *(*(temp + i) + j);
-	//temp¿Õ¼äÊÍ·Å£¬tempÖ¸ÕëÊÍ·Å
+	//tempç©ºé—´é‡Šæ”¾ï¼ŒtempæŒ‡é’ˆé‡Šæ”¾
 	for (i = 0; i < *size; i++)
 		delete[] * (temp + i);
 	delete[] temp;
@@ -94,14 +94,14 @@ void tempsizeupper_float(int *size, int addsize, float ***buffer) {
 
 int input_main(char list[][FDL], int *W0, int*W1, int *H0, int*H1) {
 
-	//ÊäÈë·Ö±æÂÊ
+	//è¾“å…¥åˆ†è¾¨ç‡
 	int w0 = 640, w1 = 0, h0 = 480, h1 = 0;
 	printf("Width and Height(W after):");
 	while (w1 == 0)scanf("%d", &w1);
 	printf("Width and Height(H after):");
 	while (h1 == 0)scanf("%d", &h1);
 
-	//ÊäÈëÎÄ¼şÃû
+	//è¾“å…¥æ–‡ä»¶å
 	int i = 0; char temp[256][FDL] = { "" };
 	FILE *fptest = NULL;
 	do {
@@ -130,8 +130,8 @@ int input_main(char list[][FDL], int *W0, int*W1, int *H0, int*H1) {
 		}
 		if (strcmp(temp[i], "help") == 0)
 		{
-			printf("[ÊäÈë·½Ê½1]½«.datÎÄ¼şÖ±½ÓÍÏ×§µ½ÃüÁîĞĞ´°¿ÚÖĞÒÔÊäÈëÍêÕûÂ·¾¶¡£ ĞÂÎÄ¼ş½«±£´æÔÚ´ËÂ·¾¶ÖĞ¡£ [ÊäÈë·½Ê½2]ÊäÈëÖ®Ç°£¬Çë½«.datÎÄ¼ş·ÅÖÃÔÚÓë´Ë³ÌĞòÏàÍ¬µÄÎÄ¼ş¼ĞÖĞ¡£ ´ËÊ±£¬ÄúÖ»ĞèÒªÊäÈëÎÄ¼şÃû£¨ÀıÈçxxxx.dat£©¼´¿É£¬¶ø²»ÊÇÍêÕûÂ·¾¶¡£ ĞÂÎÄ¼ş½«±£´æÔÚ´ËÎÄ¼ş¼ĞÖĞ¡£ \n"
-				"¿ÉÒÔÁ¬ĞøÊäÈë¶à¸öÎÄ¼şÃû(×î´ó256¸ö) ÎÄ¼şÃû±ØĞë´øºó×º(.dat) ÊäÈëendÍê³É¼üÈë ÍÆ¼öÔÚExcelĞ´ºÃÒ»ÁĞ¸´ÖÆğ¤Ìù\n");
+			printf("[è¾“å…¥æ–¹å¼1]å°†.datæ–‡ä»¶ç›´æ¥æ‹–æ‹½åˆ°å‘½ä»¤è¡Œçª—å£ä¸­ä»¥è¾“å…¥å®Œæ•´è·¯å¾„ã€‚ æ–°æ–‡ä»¶å°†ä¿å­˜åœ¨æ­¤è·¯å¾„ä¸­ã€‚ [è¾“å…¥æ–¹å¼2]è¾“å…¥ä¹‹å‰ï¼Œè¯·å°†.datæ–‡ä»¶æ”¾ç½®åœ¨ä¸æ­¤ç¨‹åºç›¸åŒçš„æ–‡ä»¶å¤¹ä¸­ã€‚ æ­¤æ—¶ï¼Œæ‚¨åªéœ€è¦è¾“å…¥æ–‡ä»¶åï¼ˆä¾‹å¦‚xxxx.datï¼‰å³å¯ï¼Œè€Œä¸æ˜¯å®Œæ•´è·¯å¾„ã€‚ æ–°æ–‡ä»¶å°†ä¿å­˜åœ¨æ­¤æ–‡ä»¶å¤¹ä¸­ã€‚ \n"
+				"å¯ä»¥è¿ç»­è¾“å…¥å¤šä¸ªæ–‡ä»¶å(æœ€å¤§256ä¸ª) æ–‡ä»¶åå¿…é¡»å¸¦åç¼€(.dat) è¾“å…¥endå®Œæˆé”®å…¥ æ¨èåœ¨Excelå†™å¥½ä¸€åˆ—å¤åˆ¶é»è´´\n");
 			printf("[Input method 1] Drag the .dat file directly into the command line window (enter the full path). The new file will be saved in this path. [Input Method 2] Put the .dat file in the same folder as this program before inputting. At this time, you only need to enter the file name (such as xxxx.dat) instead of the full path. The new file will be saved in this folder. \n"
 				"You can enter multiple file names consecutively(up to 256). Enter \"end\" to finish input. It is recommended to write a column in Excel and copy&paste\n");
 			printf("made by C8N16O32\n\n");
@@ -143,32 +143,32 @@ int input_main(char list[][FDL], int *W0, int*W1, int *H0, int*H1) {
 		i++;
 	} while (1);
 	int I = i;
-	//ÏòÍâ´«Öµ
+	//å‘å¤–ä¼ å€¼
 	for (i = 0; i < I; i++)
 		strcat(*(list + i), temp[i]);
 	*H0 = h0; *W0 = w0; *H1 = h1; *W1 = w1;
 
-	//·µ»ØÖµ
+	//è¿”å›å€¼
 	return I;
 }
 
 int wenjian_read(char* filename, float *p1x, float *p1y, int* buffersize, char ***buffer) {
-	//ÎÄ¼ş½á¹¹£ºÎÄ¼şÍ· 12×Ö½Ú ¹Ø¼üµã¿é´óĞ¡ 4×Ö½Ú Â·¾¶ĞÅÏ¢×ÜÊı 4×Ö½Ú  Â·¾¶ĞÅÏ¢1 Á½¸öf32Á½¸öint8 Â·¾¶ĞÅÏ¢2 Á½¸öi8Á½¸öi8
+	//æ–‡ä»¶ç»“æ„ï¼šæ–‡ä»¶å¤´ 12å­—èŠ‚ å…³é”®ç‚¹å—å¤§å° 4å­—èŠ‚ è·¯å¾„ä¿¡æ¯æ€»æ•° 4å­—èŠ‚  è·¯å¾„ä¿¡æ¯1 ä¸¤ä¸ªf32ä¸¤ä¸ªint8 è·¯å¾„ä¿¡æ¯2 ä¸¤ä¸ªi8ä¸¤ä¸ªi8
 	FILE* fp = NULL;
 	fp = fopen(filename, "rb");
 	int i = 0;
 
-	//ÂÔ¹ı¹Ø¼üµã¿é
+	//ç•¥è¿‡å…³é”®ç‚¹å—
 	fseek(fp, 12, SEEK_SET);
 	int point1zonesize = 0;
 	fread(&point1zonesize, sizeof(int), 1, fp);
 
-	//Â·¾¶×ÜÊı
+	//è·¯å¾„æ€»æ•°
 	fseek(fp, 16 + point1zonesize, SEEK_SET);
 	int point2zonesize = 0;
 	fread(&point2zonesize, sizeof(int), 1, fp);
 
-	//Â·¾¶ĞÅÏ¢1
+	//è·¯å¾„ä¿¡æ¯1
 	float sx = 0, sy = 0;
 	char **data = NULL;
 	i = 0; tempsizeupper(&i, point2zonesize, &data);
@@ -178,14 +178,14 @@ int wenjian_read(char* filename, float *p1x, float *p1y, int* buffersize, char *
 	fread(*(data + 0) + 2, sizeof(char), 1, fp);
 	fread(*(data + 0) + 3, sizeof(char), 1, fp);
 
-	//Â·¾¶ĞÅÏ¢n
+	//è·¯å¾„ä¿¡æ¯n
 	int j;
 	for (i = 1; i < point2zonesize; i++)
 		for (j = 0; j < 4; j++)
 			fread(*(data + i) + j, sizeof(char), 1, fp);
 	fclose(fp);
 
-	//´«Öµ
+	//ä¼ å€¼
 	if (*buffersize < point2zonesize)
 		tempsizeupper(buffersize, point2zonesize - *buffersize, buffer);
 	for (i = 1; i < point2zonesize; i++) {
@@ -200,29 +200,29 @@ int wenjian_read(char* filename, float *p1x, float *p1y, int* buffersize, char *
 }
 
 int lujing_forge_somemath(float *a1x, float *a1y, float a0x, float a0y, float b1x, float b1y, float b0x, float b0y) {
-	//¶Ôb1½øĞĞ¼ì²é
+	//å¯¹b1è¿›è¡Œæ£€æŸ¥
 	if (sqrt((double)((b1x - a0x)*(b1x - a0x) + (b1y - a0y)*(b1y - a0y))) < 1.0)return 1;
-	//·½ÏòÏòÁ¿ ´Ë³¤¶È
+	//æ–¹å‘å‘é‡ æ­¤é•¿åº¦
 	float dx = b1x - b0x, dy = b1y - b0y, dxdy = dx*dy, d = (float)sqrt(dx*dx + dy*dy);
-	//¹éÒ»»¯·½ÏòÏòÁ¿ ¹éÒ»»¯·¨ÏòÏòÁ¿(×óĞı90¶È)
+	//å½’ä¸€åŒ–æ–¹å‘å‘é‡ å½’ä¸€åŒ–æ³•å‘å‘é‡
 	float dx1 = dx / d, dy1 = dy / d, dxdy1 = dx1*dy1, dx2 = -dy1, dy2 = dx1;
-	//Ö±Ïß·½³Ì µãÓëÖ±Ïß¾àÀë
+	//ç›´çº¿æ–¹ç¨‹ ç‚¹ä¸ç›´çº¿è·ç¦»
 	float base = (b0x*dx2 + b0y*dy2), basea0 = (a0x*dx2 + a0y*dy2), dbase = basea0 - base;
-	//ÍùÇ°µÄ¾àÀë
+	//å¾€å‰çš„è·ç¦»
 	float len = sqrt(1 - (fabs(dbase) > 1 ? 1 : dbase*dbase));
-	//Ëã³öĞÂµÄµã
+	//ç®—å‡ºæ–°çš„ç‚¹
 	float a1xtemp = a0x - dbase*dx2 + len*dx1, a1ytemp = a0y - dbase*dy2 + len*dy1;
-	//´«Öµ
+	//ä¼ å€¼
 	//printf("%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2lf\n", a1xtemp, a1ytemp, b1x, b1y,dbase,len,sqrt((double)((a1xtemp - a0x)*(a1xtemp - a0x) + (a1ytemp - a0y)*(a1ytemp - a0y))));
 	*a1x = a1xtemp; *a1y = a1ytemp;
 	return 0;
 }
 
 int lujing_forge(float p1x, float p1y, int buffersize1, char **buffer, float *p2x, float *p2y, int *buffersize2, char ***buffer2, int rex0, int rey0, int rex1, int rey1) {
-	//Á÷³Ì£º 1Ëõ·Å 2ÖØĞÂ²¼ÖÃÆ«ÒÆÁ¿(¼ò»¯°æ±¾) 3´«Öµ
+	//æµç¨‹ï¼š 1ç¼©æ”¾ 2é‡æ–°å¸ƒç½®åç§»é‡(ç®€åŒ–ç‰ˆæœ¬) 3ä¼ å€¼
 	int i, j;
 
-	//buffer¡útemp2:´ÓcharÆ«ÒÆÁ¿×ª»¯µ½float×ø±ê ²¢ÇÒÍê³ÉËõ·Å
+	//bufferâ†’temp2:ä»charåç§»é‡è½¬åŒ–åˆ°floatåæ ‡ å¹¶ä¸”å®Œæˆç¼©æ”¾
 	double kx = rex1*1.0 / rex0, ky = rey1*1.0 / rey0;
 	struct __Pfloat__ temp2 { p1x*kx, p1y*ky, 0, NULL };
 	tempsizeupper_float(&temp2.buffersize, buffersize1 - temp2.buffersize, &temp2.i);
@@ -233,7 +233,7 @@ int lujing_forge(float p1x, float p1y, int buffersize1, char **buffer, float *p2
 		*(*(temp2.i + i) + 1) = *(*(temp2.i + i - 1) + 1) + *(*(buffer + i) + 1) / 100.0*ky;
 	}
 
-	//temp2¡útemp3:ÖØĞÂÉú³É×ø±ê buffer¡útemp4:½ÓÊÕchar¸ñÊ½µÄ¿ÓµÀÊı¾İ
+	//temp2â†’temp3:é‡æ–°ç”Ÿæˆåæ ‡ bufferâ†’temp4:æ¥æ”¶charæ ¼å¼çš„å‘é“æ•°æ®
 	struct __Pfloat__ temp3 { temp2.x, temp2.y, 0, NULL };
 	struct __P__ temp4 { temp3.x, temp3.y, 0, NULL };
 	tempsizeupper_float(&temp3.buffersize, 1000, &temp3.i);
@@ -263,7 +263,7 @@ int lujing_forge(float p1x, float p1y, int buffersize1, char **buffer, float *p2
 	temp3.buffersize = ia; temp4.buffersize = ia;
 
 
-	//temp3¡útemp4:×ø±ê×ª»¯µ½char¸ñÊ½µÄÆ«ÒÆÁ¿
+	//temp3â†’temp4:åæ ‡è½¬åŒ–åˆ°charæ ¼å¼çš„åç§»é‡
 	float t4x = temp4.x, t4y = temp4.y;
 	for (i = 1; i < temp4.buffersize; i++) {
 		*(*(temp4.i + i) + 0) = (int)((*(*(temp3.i + i) + 0) - t4x) * 100);
@@ -273,14 +273,14 @@ int lujing_forge(float p1x, float p1y, int buffersize1, char **buffer, float *p2
 		//printf("%d\t%d\t%d\t%d\t%d\t", i, *(*(temp4.i + i) + 0), *(*(temp4.i + i) + 1), *(*(temp4.i + i) + 2),*(*(temp4.i + i) + 3));
 	}
 
-	//temp4¡úbuffer2:´«Öµ
+	//temp4â†’buffer2:ä¼ å€¼
 	tempsizeupper(buffersize2, temp4.buffersize, buffer2);
 	*p2x = temp4.x; *p2y = temp4.y;
 	for (i = 0; i < temp4.buffersize; i++)
 		for (j = 0; j < 4; j++)
 			*(*(*buffer2 + i) + j) = *(*(temp4.i + i) + j);
 
-	//ÄÚ´æ»ØÊÕ
+	//å†…å­˜å›æ”¶
 	for (i = 0; i < temp2.buffersize; i++)
 		delete[] * (temp2.i + i); delete[]temp2.i;
 	for (i = 0; i < temp3.buffersize; i++) {
@@ -293,22 +293,22 @@ int lujing_forge(float p1x, float p1y, int buffersize1, char **buffer, float *p2
 }
 
 int wenjian_write(char*filename, int w, int h, float sx, float sy, int buffersize, char**buffer) {
-	//ÎÄ¼ş½á¹¹£ºÎÄ¼şÍ· 12×Ö½Ú ¹Ø¼üµã¿é´óĞ¡ 4×Ö½Ú Â·¾¶ĞÅÏ¢×ÜÊı 4×Ö½Ú  Â·¾¶ĞÅÏ¢1 Á½¸öf32Á½¸öint8 Â·¾¶ĞÅÏ¢2 Á½¸öi8Á½¸öi8
+	//æ–‡ä»¶ç»“æ„ï¼šæ–‡ä»¶å¤´ 12å­—èŠ‚ å…³é”®ç‚¹å—å¤§å° 4å­—èŠ‚ è·¯å¾„ä¿¡æ¯æ€»æ•° 4å­—èŠ‚  è·¯å¾„ä¿¡æ¯1 ä¸¤ä¸ªf32ä¸¤ä¸ªint8 è·¯å¾„ä¿¡æ¯2 ä¸¤ä¸ªi8ä¸¤ä¸ªi8
 
-	//1 ÔÙ´Î´ò¿ªÔ­ÎÄ¼ş£¬»ñÈ¡Ç°°ë²¿·ÖµÄÄÚÈİ
+	//1 å†æ¬¡æ‰“å¼€åŸæ–‡ä»¶ï¼Œè·å–å‰åŠéƒ¨åˆ†çš„å†…å®¹
 	FILE* fp = NULL;
 	fp = fopen(filename, "rb");
 	int i = 0;
-	//¹Ø¼üµã¿é
+	//å…³é”®ç‚¹å—
 	fseek(fp, 12, SEEK_SET);
 	int point1zonesize = 0;
 	fread(&point1zonesize, sizeof(int), 1, fp);
-	char talk_old[8000] = "";//Ç°²¿ÄÚÈİ
+	char talk_old[8000] = "";//å‰éƒ¨å†…å®¹
 	fseek(fp, 16+4, SEEK_SET);
 	fread(talk_old, sizeof(char), point1zonesize-4, fp);
 	fclose(fp);
 
-	//2 ×¼±¸´ıĞ´ÈëµÄÄÚÈİ
+	//2 å‡†å¤‡å¾…å†™å…¥çš„å†…å®¹
 	static char filehead[] = { 0x43,0x55,0x52,0x56,0x02,0x00,0x00,0x00,0x01,0x00,0x00,0x00 };
 	int blocksize = 4 + strlen(talk_old), numofkeypoint = 0, i32bsize = buffersize;
 	static char selfhead[] = "\r\n\r\n"
@@ -335,27 +335,21 @@ int wenjian_write(char*filename, int w, int h, float sx, float sy, int buffersiz
 		strcat(filenamenew, temp3);
 	}
 	else strcat(filenamenew, filename);
-	//3 Ğ´ÈëÎÄ¼ş
+	//3 å†™å…¥æ–‡ä»¶
 
 	fp = NULL;
 	fp = fopen(filenamenew, "wb");
-	fwrite(filehead, sizeof(char), 12, fp);//ÎÄ¼şÍ·
-	//ÎªÁË¿É¶ÁĞÔ (¿ÉÒÔÕâÃ´×öÊÇÒòÎªĞÂÎÄ¼şÍ·×îºó»»ÁËÒ»ĞĞ È«²¿ÌîÈëÁË\20)
-	blocksize += 2;
-	//ÎªÁË¿É¶ÁĞÔ end
-	fwrite(&blocksize, sizeof(int), 1, fp);//¹Ø¼üµã¿é´óĞ¡
-	fwrite(&numofkeypoint, sizeof(int), 1, fp);//¹Ø¼üµãÊıÁ¿=0
-	fwrite(talk_old, sizeof(char), strlen(talk_old), fp);//¾ÉµÄÎÄ¼şÍ·ĞÅÏ¢
-	if (selfcheck)fwrite(selfhead, sizeof(char), strlen(selfhead), fp);//ĞÂÎÄ¼şÍ·ĞÅÏ¢
-	//ÎªÁË¿É¶ÁĞÔ (¿ÉÒÔÕâÃ´×öÊÇÒòÎªĞÂÎÄ¼şÍ·×îºó»»ÁËÒ»ĞĞ È«²¿ÌîÈëÁË\20)
-	fwrite("\20\20", sizeof(char), 2, fp);
-	//ÎªÁË¿É¶ÁĞÔ end
-	fwrite(&i32bsize, sizeof(_int32), 1, fp);//Â·¾¶×ÜÊı
-	fwrite(&sx, sizeof(float), 1, fp);//ÒÔÏÂÊÇ¹Ø¼üµã1
+	fwrite(filehead, sizeof(char), 12, fp);//æ–‡ä»¶å¤´
+	fwrite(&blocksize, sizeof(int), 1, fp);//å…³é”®ç‚¹å—å¤§å°
+	fwrite(&numofkeypoint, sizeof(int), 1, fp);//å…³é”®ç‚¹æ•°é‡=0
+	fwrite(talk_old, sizeof(char), strlen(talk_old), fp);//æ—§çš„æ–‡ä»¶å¤´ä¿¡æ¯
+	if (selfcheck)fwrite(selfhead, sizeof(char), strlen(selfhead), fp);//æ–°æ–‡ä»¶å¤´ä¿¡æ¯
+	fwrite(&i32bsize, sizeof(_int32), 1, fp);//è·¯å¾„æ€»æ•°
+	fwrite(&sx, sizeof(float), 1, fp);//ä»¥ä¸‹æ˜¯å…³é”®ç‚¹1
 	fwrite(&sy, sizeof(float), 1, fp);
 	fwrite(*buffer + 2, sizeof(char), 1, fp);
 	fwrite(*buffer + 3, sizeof(char), 1, fp);
-	int j;	//ÒÔÏÂÊÇÆäÓà¹Ø¼üµã
+	int j;	//ä»¥ä¸‹æ˜¯å…¶ä½™å…³é”®ç‚¹
 	for (i = 1; i < buffersize; i++)
 		for (j = 0; j < 4; j++)
 			fwrite(*(buffer + i) + j, sizeof(char), 1, fp);
@@ -366,25 +360,25 @@ int wenjian_write(char*filename, int w, int h, float sx, float sy, int buffersiz
 
 int main()
 {
-	//tsyysr=ÌáÊ¾ÓïÓëÊäÈë
+	//tsyysr=æç¤ºè¯­ä¸è¾“å…¥
 	char fileindexlist[256][FDL] = { "" };
 	int w0, w1, h0, h1, i, I;
 	I = input_main(fileindexlist, &w0, &w1, &h0, &h1);
 
-	//´¦Àí¶à¸ödat
+	//å¤„ç†å¤šä¸ªdat
 	int filei; struct __P__ p1 = { 0,0,0,NULL }, p2 = { 0,0,0,NULL };
 	for (filei = 0; filei < I; filei++) {
-		//¶ÁÈ¡ÎÄ¼ş
-		wenjian_read(fileindexlist[filei], &p1.x, &p1.y, &p1.buffersize, &p1.i);//¿ÉÒÔ´«½á¹¹Ìå µ«ÊÇÄÚ²¿»á¹ıÓÚ¸´ÔÓ
-		//×ª»¯¹ìµÀ
+		//è¯»å–æ–‡ä»¶
+		wenjian_read(fileindexlist[filei], &p1.x, &p1.y, &p1.buffersize, &p1.i);//å¯ä»¥ä¼ ç»“æ„ä½“ ä½†æ˜¯å†…éƒ¨ä¼šè¿‡äºå¤æ‚
+		//è½¬åŒ–è½¨é“
 		lujing_forge(p1.x, p1.y, p1.buffersize, p1.i, &p2.x, &p2.y, &p2.buffersize, &p2.i, w0, h0, w1, h1);
-		//Ğ´»ØÎÄ¼ş
+		//å†™å›æ–‡ä»¶
 		wenjian_write(fileindexlist[filei], w1, h1, p2.x, p2.y, p2.buffersize, p2.i);
-		//ÊÍ·ÅÄÚ´æ,³õÊ¼»¯
+		//é‡Šæ”¾å†…å­˜,åˆå§‹åŒ–
 		for (i = 0; i < p1.buffersize; i++)delete[] * (p1.i + i); delete[]p1.i; p1.i = NULL; p1.buffersize = 0; p1.x = 0; p1.y = 0;
 		for (i = 0; i < p2.buffersize; i++)delete[] * (p2.i + i); delete[]p2.i; p2.i = NULL; p2.buffersize = 0; p2.x = 0; p2.y = 0;
 	}
 
-	//½áÊø
+	//ç»“æŸ
 	return 0;
 }
